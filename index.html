@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Client</title>
+</head>
+<body>
+  <h1>WebSocket Client</h1>
+  <div id="output"></div>
+
+  <script>
+    const outputDiv = document.getElementById('output');
+    const wsClient = new WebSocket('ws://localhost:4000');
+
+    wsClient.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      outputDiv.innerHTML = `<p>${JSON.stringify(message, null, 2)}</p>`;
+    };
+  </script>
+</body>
+</html>
