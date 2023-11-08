@@ -2,11 +2,7 @@ const user = require('../model/user');
 const order = require('../model/order');
 const admin = require('../model/admin');
 const devliveryPerson = require('../model/deliveryPersons');
-const WebSocket = require('ws');
 
-
-// WebSocket client for HTTP-to-WebSocket relay
-const wsClient = new WebSocket('ws://localhost:4000');
 
 const register = async (req, res) => {
   try {
@@ -29,22 +25,10 @@ const register = async (req, res) => {
     const newAdmin = await admin.create({
       password, country, gender, adminName, email, mobile, orderStatus
     });
-
-    const httpResponseMessage = {
-      status: res.statusCode,
-      message: 'User create success',
-      data: { newUser, newOrder, newAdmin }
-    };
-    wsClient.on('open', () => {
-        console.log(`client connected`)
-      wsClient.send(JSON.stringify(httpResponseMessage));
-      console.log(httpResponseMessage)
-    });
-
     res.status(200).json({ message: 'User create success', newUser, newOrder, newAdmin });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Internal server error' });
+    // res.status(500).json({ message: 'Internal server error' });
   }
 };
 
