@@ -1,15 +1,7 @@
 const mongoose = require("mongoose");
 
 const devliveryPersonSchema = mongoose.Schema({
-    firstName:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User'
-    },
-    LastName:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User'
-    },
-    mobile:{
+    user_info:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     },

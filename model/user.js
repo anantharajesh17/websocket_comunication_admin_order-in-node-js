@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
     firstName:{
-        type:String
+        type:String,
     },
     lastName:{
-        type:String
+        type:String,                   
     },
     email:{
         type:String,
@@ -47,6 +47,10 @@ const schema = mongoose.Schema({
     ip_Address:{
         type:String,
         default:"::1"
+    },
+    is_active:{
+        type:Boolean,
+        default:true
     }
     },
     {
